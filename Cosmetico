@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosméticos Esenciales BellezaNova</title>
+    <style>
+        /* Estilos CSS básicos para la página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #555;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .product {
+            width: 300px;
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .cart {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            position: fixed; /* Fija el carrito a la derecha */
+            top: 0; /* Alinea al tope */
+            right: 0; /* Alinea a la derecha */
+            height: 100%; /* Ocupa toda la altura */
+            overflow-y: auto; /* Permite el scroll si es necesario */
+            box-sizing: border-box; /* Incluye el padding y borde en el ancho */
+        }
+
+        .cart-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .quantity-controls {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .quantity-controls button {
+            padding: 5px 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .quantity-controls button:hover {
+            background-color: #0056b3;
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            text-decoration: none;
+            text-align: center;
+            width: 80%; /* Para que se vea bien en dispositivos móviles */
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+
+
+        footer {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Media query para dispositivos móviles */
+        @media (max-width: 768px) {
+            .products {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 80%;
+            }
+
+            .cart {
+                width: 90%;
+                position: static; /* Elimina el posicionamiento fijo */
+                height: auto; /* Ajusta la altura automáticamente */
+                margin: 20px auto; /* Centra el carrito */
+            }
+
+            .whatsapp-button {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado de la página -->
+    <header>
+        <h1>Cosméticos Esenciales BellezaNova</h1>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Productos</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Sección de Productos -->
+    <section class="products">
+
+        <!-- Producto 1 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200x200" alt="Limpiador Facial"> <!-- Placeholder image -->
+            <h2>Limpiador Facial Suave</h2>
+            <p>Limpia la piel suavemente, eliminando impurezas y maquillaje.</p>
+            <p>Precio: MXN 150</p>
+            <button onclick="addToCart('Limpiador Facial Suave', 150, 'https://via.placeholder.com/200x200')">Añadir al Carrito</button>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200x200" alt="Tónico Facial"> <!-- Placeholder image -->
+            <h2>Tónico Facial Hidratante</h2>
+            <p>Equilibra el pH de la piel y la prepara para la hidratación.</p>
+            <p>Precio: MXN 120</p>
+            <button onclick="addToCart('Tónico Facial Hidratante', 120, 'https://via.placeholder.com/200x200')">Añadir al Carrito</button>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200x200" alt="Crema Hidratante"> <!-- Placeholder image -->
+            <h2>Crema Hidratante Diurna</h2>
+            <p>Hidrata la piel durante todo el día, dejándola suave y radiante.</p>
+            <p>Precio: MXN 200</p>
+            <button onclick="addToCart('Crema Hidratante Diurna', 200, 'https://via.placeholder.com/200x200')">Añadir al Carrito</button>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200x200" alt="Protector Solar"> <!-- Placeholder image -->
+            <h2>Protector Solar SPF 50</h2>
+            <p>Protege la piel de los dañinos rayos UV del sol.</p>
+            <p>Precio: MXN 250</p>
+            <button onclick="addToCart('Protector Solar SPF 50', 250, 'https://via.placeholder.com/200x200')">Añadir al Carrito</button>
+        </div>
+
+        <!-- Producto 5 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200x200" alt="Contorno de Ojos"> <!-- Placeholder image -->
+            <h2>Contorno de Ojos Anti-edad</h2>
+            <p>Reduce las arrugas y las ojeras alrededor de los ojos.</p>
+            <p>Precio: MXN 280</p>
+            <button onclick="addToCart('Contorno de Ojos Anti-edad', 280, 'https://via.placeholder.com/200x200')">Añadir al Carrito</button>
+        </div>
+
+        <!-- Producto 6 -->
+        <div class="product">
+            <img src="https://via.placeholder.com/200x200" alt="Bálsamo Labial"> <!-- Placeholder image -->
+            <h2>Bálsamo Labial Hidratante</h2>
+            <p>Hidrata y protege los labios secos y agrietados.</p>
+            <p>Precio: MXN 80</p>
+            <button onclick="addToCart('Bálsamo Labial Hidratante', 80, 'https://via.placeholder.com/200x200')">Añadir al Carrito</button>
+        </div>
+
+    </section>
+
+    <!-- Carrito de Compras -->
+    <section class="cart">
+        <h2>Carrito de Compras</h2>
+        <div id="cart-items">
+            <!-- Aquí se mostrarán los elementos del carrito -->
+        </div>
+        <h3>Total: <span id="cart-total">MXN 0</span></h3>
+
+        <a href="#" class="whatsapp-button" onclick="openWhatsApp()">Finalizar Pedido y Contactar por WhatsApp</a>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>Contacto: info@bellezanova.com</p>
+        <p>© 2023 BellezaNova. Todos los derechos reservados.</p>
+    </footer>
+
+    <audio id="addToCartSound" src="https://www.soundjay.com/button/sounds/button-20.mp3" preload="auto"></audio>
+
+    <script>
+        // JavaScript para la funcionalidad del carrito
+        let cart = [];
+
+        function playAddToCartSound() {
+            const sound = document.getElementById('addToCartSound');
+            sound.currentTime = 0; // Reinicia el sonido al principio
+            sound.play();
+        }
+
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name: name, price: price, quantity: 1, image:image });
+            }
+
+            updateCart();
+            playAddToCartSound(); // Reproducir el sonido al añadir al carrito
+        }
+
+        function updateCart() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            const cartTotalSpan = document.getElementById('cart-total');
+            let total = 0;
+
+            cartItemsDiv.innerHTML = ''; // Limpiar el carrito antes de actualizar
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const cartItemDiv = document.createElement('div');
+                cartItemDiv.classList.add('cart-item');
+                cartItemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;">
+                    <span>${item.name}</span>
+                    <div class="quantity-controls">
+                        <button onclick="decreaseQuantity(${index})">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="increaseQuantity(${index})">+</button>
+                    </div>
+                    <span>MXN ${item.price}</span>
+                    <span>Subtotal: MXN ${itemTotal}</span>
+                    <button onclick="removeFromCart(${index})">Eliminar</button>
+                `;
+                cartItemsDiv.appendChild(cartItemDiv);
+            });
+
+            cartTotalSpan.textContent = `MXN ${total}`;
+        }
+
+        function increaseQuantity(index) {
+            cart[index].quantity++;
+            updateCart();
+        }
+
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+                updateCart();
+            }
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function openWhatsApp() {
+            let message = "Hola, quiero confirmar el siguiente pedido:\n\n";
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                message += `- ${item.name} - Cantidad: ${item.quantity} - Subtotal: MXN ${itemTotal}\n`;
+                total += itemTotal;
+            });
+
+            message += `\nTotal: MXN ${total}\n\nPor favor, confirma mi pedido. ¡Gracias!`;
+
+            //  IMPORTANTE: Reemplaza +15551234567 con el número de teléfono real.
+            const whatsappNumber = "+15551234567";
+
+            //  Asegurarse de que el número de teléfono esté correctamente formateado para WhatsApp.
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+
+</body>
+</html>
+
